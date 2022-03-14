@@ -23,3 +23,9 @@ class ListsTask1Test:
   @Test def testAppendToNil(): Unit =
     val tail = Cons (40, Nil())
     assertEquals(tail, append(Nil(), tail))
+
+  @Test def testFlatMap(): Unit =
+    assertEquals(Cons(11, Cons(21, Cons(31, Nil()))), flatMap(lst)(v => Cons( v + 1, Nil())))
+
+  @Test def testFlatMap2(): Unit =
+    assertEquals(Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil())))))), flatMap(lst)(v => Cons( v + 1, Cons( v + 2, Nil()))))
