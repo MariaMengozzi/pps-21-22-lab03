@@ -33,3 +33,11 @@ object Lists extends App:
     def flatMap[A,B](l: List[A])(f: A => List[B]): List[B] = l match
       case Cons(h, t) => append(f(h), flatMap(t)(f))
       case _ => Nil()
+
+    def mapFlatMap[A, B](l: List[A])(mapper: A => B): List[B] =
+      flatMap(l)(v => Cons(mapper(v),Nil()))
+
+    def filterFlatMap[A](l: List[A])(p: A => Boolean): List[A] =
+      flatMap(l)(v => v match
+        case i if p(v) => Cons(v,Nil())
+        case _ => Nil())

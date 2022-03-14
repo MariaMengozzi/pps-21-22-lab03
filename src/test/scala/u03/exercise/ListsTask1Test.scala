@@ -1,6 +1,7 @@
 package u03.exercise
 
-import Lists.List.*
+import Lists.*
+import List.*
 import org.junit.*
 import org.junit.Assert.*
 
@@ -29,3 +30,9 @@ class ListsTask1Test:
 
   @Test def testFlatMap2(): Unit =
     assertEquals(Cons(11, Cons(12, Cons(21, Cons(22, Cons(31, Cons(32, Nil())))))), flatMap(lst)(v => Cons( v + 1, Cons( v + 2, Nil()))))
+
+  @Test def testFilterFlatMap(): Unit =
+    assertEquals(filter(lst)(_ >= 20), filterFlatMap(lst)(_ >= 20))
+
+  @Test def testMapFlatMap(): Unit =
+    assertEquals(map(lst)(_ + 1), mapFlatMap(lst)(_+1))
