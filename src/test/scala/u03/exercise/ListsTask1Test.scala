@@ -49,3 +49,13 @@ class ListsTask1Test:
     import u02.AlgebraicDataTypes.Person
     val p = Cons(Person.Student("mario", 2015), Cons(Person.Teacher("p1","c1"), Cons(Person.Teacher("t2","c2"),Nil())))
     assertEquals(Cons("c1", Cons("c2", Nil())), teacherCourses(p))
+
+  @Test def testFoldRight(): Unit =
+    val l = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
+    assertEquals(-8, foldRight(l)(0)(_ - _))
+    //f(3, f(7, f(1, f(5,0)))) = f(3, f(7, f(1, 5))) = f(3, f(7, -4)) = f(3, 11) = -8
+
+  @Test def testFoldLeft(): Unit =
+    val l = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
+    assertEquals(-16, foldLeft(l)(0)(_ - _))
+    

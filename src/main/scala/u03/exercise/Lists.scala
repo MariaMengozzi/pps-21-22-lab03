@@ -1,5 +1,7 @@
 package u03.exercise
 
+import scala.annotation.tailrec
+
 object Lists extends App:
 
   // A generic linkedlist
@@ -61,4 +63,10 @@ object Lists extends App:
         case _ => Nil()
       )
 
+    def foldRight[A,B] (l: List[A])(reduce: B)(f: (A,B) => B): B = l match
+      case Cons(h, t) => f(h, foldRight(t)(reduce)(f))
+      case _ => reduce
 
+    def foldLeft[A,B] (l: List[A])(reduce: B)(f: (B,A) => B): B = l match
+      case Cons(h, t) => f(foldLeft(t)(reduce)(f), h)
+      case _ => reduce
