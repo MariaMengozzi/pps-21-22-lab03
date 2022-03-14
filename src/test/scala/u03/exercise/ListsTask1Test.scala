@@ -44,3 +44,8 @@ class ListsTask1Test:
   @Test def testMaxNil(): Unit =
     import u02.Optionals.Option.None
     assertEquals(None(), max(Nil()))
+
+  @Test def testTeacherCourses(): Unit =
+    import u02.AlgebraicDataTypes.Person
+    val p = Cons(Person.Student("mario", 2015), Cons(Person.Teacher("p1","c1"), Cons(Person.Teacher("t2","c2"),Nil())))
+    assertEquals(Cons("c1", Cons("c2", Nil())), teacherCourses(p))

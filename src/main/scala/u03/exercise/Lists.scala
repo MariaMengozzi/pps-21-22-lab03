@@ -12,6 +12,7 @@ object Lists extends App:
     import u02.Optionals.Option
     import u02.Optionals.Option.None
     import u02.Optionals.Option.Some
+    import u02.AlgebraicDataTypes.Person
 
     def sum(l: List[Int]): Int = l match
       case Cons(h, t) => h + sum(t)
@@ -53,5 +54,11 @@ object Lists extends App:
         case (Nil(), _) => max
 
       _max(l, None())
+
+    def teacherCourses(t: List[Person]): List[String] = 
+      flatMap(t)(p => p match 
+        case Person.Teacher(_, c) => Cons(c,Nil())
+        case _ => Nil()
+      )
 
 
