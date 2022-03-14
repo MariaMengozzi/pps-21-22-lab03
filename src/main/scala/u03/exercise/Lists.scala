@@ -9,6 +9,10 @@ object Lists extends App:
   // a companion object (i.e., module) for List
   object List:
 
+    import u02.Optionals.Option
+    import u02.Optionals.Option.None
+    import u02.Optionals.Option.Some
+
     def sum(l: List[Int]): Int = l match
       case Cons(h, t) => h + sum(t)
       case _ => 0
@@ -41,3 +45,13 @@ object Lists extends App:
       flatMap(l)(v => v match
         case i if p(v) => Cons(v,Nil())
         case _ => Nil())
+
+    def max(l: List[Int]): Option[Int] =
+      def _max(list: List[Int], max: Option[Int]): Option[Int] = (list, max) match
+        case (Cons(h, t), Some(x)) if x > h => _max(t, max)
+        case (Cons(h, t), _) => _max(t, Some(h))
+        case (Nil(), _) => max
+
+      _max(l, None())
+
+

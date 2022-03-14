@@ -36,3 +36,11 @@ class ListsTask1Test:
 
   @Test def testMapFlatMap(): Unit =
     assertEquals(map(lst)(_ + 1), mapFlatMap(lst)(_+1))
+
+  @Test def testMax(): Unit =
+    import u02.Optionals.Option.Some
+    assertEquals(Some(25), max(Cons(10, Cons(25, Cons(20, Nil())))))
+
+  @Test def testMaxNil(): Unit =
+    import u02.Optionals.Option.None
+    assertEquals(None(), max(Nil()))
