@@ -58,4 +58,11 @@ class ListsTask1Test:
   @Test def testFoldLeft(): Unit =
     val l = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
     assertEquals(-16, foldLeft(l)(0)(_ - _))
-    // f(f(f(f(0,5),1),7),3) = f(f(f(-5,1),7),3) = f(f(-6,7),3) = f(-13,3) = -16
+
+  @Test def testFoldRight2(): Unit =
+    val l = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
+    assertEquals("num: 5num: 1num: 7num: 3", foldRight(l)("")((x, acc) => s"${acc}num: ${x}"))
+
+  @Test def testFoldLeft2(): Unit =
+    val l = Cons("i", Cons("a", Cons("o", Nil())))
+    assertEquals("ciao", foldLeft(l)("c")(_ + _))
