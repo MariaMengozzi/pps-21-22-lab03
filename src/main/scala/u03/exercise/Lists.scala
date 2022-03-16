@@ -71,11 +71,5 @@ object Lists extends App:
       case Cons(h, t) => append(reverseList(t), Cons(h,Nil()))
       case _ => Nil()
 
-    //TODO correct foldLeft
     def foldLeft[A,B] (l: List[A])(reduce: B)(f: (B,A) => B): B =
       foldRight(reverseList(l))(reduce)((x,y) => f(y,x))
-      
-      /*l match
-      case Cons(h, t) => f(foldLeft(t)(reduce)(f), h)
-      case _ => reduce
-*/
