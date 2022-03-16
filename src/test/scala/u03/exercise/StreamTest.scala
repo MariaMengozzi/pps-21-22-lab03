@@ -20,3 +20,8 @@ class StreamTest:
   @Test def testConstant2(): Unit =
     assertEquals( Cons(1, Cons(1, Cons(1, Cons(1, Cons(1, Nil()))))),
       Stream.toList(Stream.take(Stream.constant(1))(5)))
+
+  @Test def testFibonacci(): Unit =
+    val fibs: Stream[Int] = Stream.fibonacci
+    assertEquals(Cons(0, Cons(1, Cons(1, Cons(2, Cons(3, Cons(5, Cons(8, Cons(13, Nil())))))))),
+      Stream.toList(Stream.take(fibs)(8)))

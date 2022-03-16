@@ -44,5 +44,12 @@ object Streams extends App:
     def constant[A](k: A): Stream[A] =
       iterate(k)(x => x)
 
+    def fibonacci: Stream[Int] =
+      def _fibonacci(a: Int, b: Int): Stream[Int] = 
+        cons(a, _fibonacci(b, a+b))
+
+      _fibonacci(0,1)
+
+
   end Stream
 
